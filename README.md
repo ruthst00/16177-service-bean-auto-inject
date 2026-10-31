@@ -43,7 +43,16 @@ curl -i http://localhost:8080/workaround
 curl -i http://localhost:8080/conventional
 ```
 
-When the issue reproduces, `/` reports all three `annotated` values as `false`, but the `autowired` and `conventional` values as `true`. `/broken` returns HTTP 500 because a dependency is null; both controls return HTTP 200 with `invoice:user:project`.
+When the issue reproduces, `/` reports all three `annotated` values as `false`, but the `autowired` and `conventional` values as `true`. `/broken` returns HTTP 500 because a dependency is null; both controls return HTTP 200 with `invoice:user:project`:
+
+- `/broken` → HTTP 500 from null service dependencies.
+
+- `/workaround` → HTTP 200 using `@Autowired`.
+
+- `/conventional` → HTTP 200 using Grails conventions.
+
+- Integration tests: __1 expected failure, 2 passing controls__.
+
 
 ## Regression tests
 
@@ -70,3 +79,6 @@ Using JDK 25.0.3 and Gradle 9.5.1, `./gradlew clean test integrationTest` on M5 
 Live HTTP checks with `bootRun` also confirmed `/` returns the injection statuses above, `/broken` returns 500, and `/workaround` and `/conventional` both return 200 with `invoice:user:project`.
 
 To investigate the exact issue further, obtain the reporter's `@Service` import, service source locations, component-scan configuration, and ideally their example application.
+
+## Important limitation:
+This sample applications reproduces the symptom with Spring `@Service` beans in `src/main/groovy`, not the exact reported version regression. Conventional Grails services injected correctly on M5. The issue omits details needed to establish an exact reproduction.
