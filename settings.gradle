@@ -1,0 +1,2 @@
+// SPDX-License-Identifier: Apache-2.0
+rootProject.name = '16177-service-bean-auto-inject'
