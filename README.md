@@ -9,7 +9,7 @@ The issue shows `@Service class LicenseService` with three unannotated service p
 
 **Important limitation:** the report does not supply an application, source locations, or the `@Service` import. Its exact M3-to-M5 regression cannot be established from that snippet. Locally, placing all services in `grails-app/services` on M5 injected every dependency successfully, with or without Spring `@Service` and component scanning.
 
-This sample instead demonstrates the same null-injection symptom for **Spring-managed services in `src/main/groovy`**, discovered by the explicit `@ComponentScan('example')` on `Application`. Those are not conventional Grails service artefacts. This is a candidate configuration to compare with the reporter, **not proof of the reported framework regression**. The source location and scanning are deliberate, visible differences; do not attribute the failure to M5 alone.
+This sample instead demonstrates the same null-injection symptom for **Spring-managed services in `src/main/groovy`**, discovered by the explicit `@ComponentScan('example')` on `Application`. Those are not conventional Grails service artifacts. This is a candidate configuration to compare with the reporter, **not proof of the reported framework regression**. The source location and scanning are deliberate, visible differences; do not attribute the failure to M5 alone.
 
 Three variants use the same real dependencies (the dependencies themselves live in `grails-app/services/example`):
 
