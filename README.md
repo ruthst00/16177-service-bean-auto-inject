@@ -80,5 +80,4 @@ Live HTTP checks with `bootRun` also confirmed `/` returns the injection statuse
 
 To investigate the exact issue further, obtain the reporter's `@Service` import, service source locations, component-scan configuration, and ideally their example application.
 
-## Important limitation:
-This sample application reproduces the symptom with Spring `@Service` beans in `src/main/groovy`, not the exact reported version regression. Conventional Grails services in `grails-app/services` injected correctly on M5. The issue omits details needed to establish an exact reproduction.
+> IMPORTANT: This sample application reproduces the symptom with Spring `@Service` beans in `src/main/groovy`, not the exact reported version regression. Conventional Grails services in `grails-app/services` injected correctly on M5. The issue omits details needed to establish an exact reproduction.
